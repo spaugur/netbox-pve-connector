@@ -1,0 +1,46 @@
+{
+    "name": "netbox-pve-connector",
+    "version": "1.0.0",
+    "description": "Webservice to handle Netbox webhooks for Virtual Machine events and pass them to Proxmox.",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon --exec \"ts-node -r tsconfig-paths/register\" src/server.ts",
+        "tw": "npx @tailwindcss/cli -i ./static/css/tw.css -o ./static/css/tw.min.css --watch",
+        "dev": "concurrently \"npm:start\" \"npm:tw\"",
+        "build": "tsc && copyfiles \"views/**/*\" \"static/**/*\" \".build\"",
+        "serve": "TS_NODE_BASEURL=./.build node -r tsconfig-paths/register .build/src/server.js",
+        "serve-nt": "set TS_NODE_BASEURL=./.build && node -r tsconfig-paths/register .build/src/server.js"
+    },
+    "keywords": [],
+    "author": "Kría Elínarbur <kria@spaugurdata.com>",
+    "license": "MIT",
+    "packageManager": "pnpm@10.10.0",
+    "dependencies": {
+        "@novnc/novnc": "^1.6.0",
+        "@tailwindcss/cli": "^4.1.13",
+        "concurrently": "^9.2.1",
+        "cookie": "^1.0.2",
+        "cors": "^2.8.5",
+        "dotenv": "^17.2.2",
+        "ejs": "^3.1.10",
+        "express": "^5.1.0",
+        "express-basic-auth": "^1.2.1",
+        "ioredis": "^5.8.0",
+        "neverthrow": "^8.2.0",
+        "tailwindcss": "^4.1.13",
+        "zod": "^4.1.11"
+    },
+    "devDependencies": {
+        "@types/cors": "^2.8.19",
+        "@types/express": "^5.0.3",
+        "@types/node": "^24.5.2",
+        "@types/ws": "^8.18.1",
+        "copyfiles": "^2.4.1",
+        "nodemon": "^3.1.10",
+        "prettier": "^3.6.2",
+        "prettier-plugin-tailwindcss": "^0.6.14",
+        "ts-node": "^10.9.2",
+        "tsconfig-paths": "^4.2.0",
+        "typescript": "^5.9.2"
+    }
+}

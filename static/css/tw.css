@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@theme {
+    --font-sans: "IBM Plex Sans", sans-serif;
+}
+
+.logon aside .logon-bg-container {
+    background-image: url("/public/static/img/background0.jpg");
+}

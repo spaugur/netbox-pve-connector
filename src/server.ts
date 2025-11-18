@@ -64,7 +64,9 @@ app.use(
 //app.get("/", async (req: Request, res: Response) => {});
 
 app.post("/netbox-webhook", async (req: Request, res: Response) => {
-    logger.debug("Received webhook payload: " + JSON.stringify(req, null, 2));
+    logger.debug(
+        "Received webhook payload: " + JSON.stringify(req.body, null, 2),
+    );
 
     return res.json({
         success: {

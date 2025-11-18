@@ -10,6 +10,8 @@ export const stringify_err = (error: any) => {
     return `${error}`;
 };
 
+const pad_width = "(wwwww) yyyy-mm-dd hh:mm:ss".length;
+
 export const error = (msg: string) => {
     return console.log(`(error) ${fmt_date(new Date())} ${msg}`);
 };
@@ -22,4 +24,4 @@ export const debug = (msg: string) => {
     return console.log(`(debug) ${fmt_date(new Date())} ${msg}`);
 };
 
-export const logger = { error, warn, debug };
+export const logger = { error, warn, debug, pad_width };

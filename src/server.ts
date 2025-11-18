@@ -79,5 +79,10 @@ app.use((req: Request, res: Response) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server running at http://127.1.1.1:${port}`);
+    logger.debug(`Server running at http://0.0.0.0:${port}`);
+    logger.debug(
+        `Configured users:\n${Object.keys(basic_auth_users)
+            .map((k) => " ".repeat(logger.pad_width) + " - " + k)
+            .join("\n")}`,
+    );
 });

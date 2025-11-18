@@ -41,6 +41,7 @@ import cors from "cors";
 import basic_auth from "express-basic-auth";
 import { handle_401_response } from "@/lib/auth";
 import { errors } from "@/lib/errors";
+import { logger } from "@/lib/logger";
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -61,6 +62,17 @@ app.use(
 );
 
 //app.get("/", async (req: Request, res: Response) => {});
+
+app.post("/netbox-webhook", async (req: Request, res: Response) => {
+    logger.debug("Received webhook payload: " + JSON.stringify(req, null, 2));
+
+    return res.json({
+        success: {
+            code: "ACKNOWLEDGED",
+            message: "Event acknowledged, thank you!",
+        },
+    });
+});
 
 app.use((req: Request, res: Response) => {
     return res.json(errors.NO_CONTROLLER_AVAILABLE);
